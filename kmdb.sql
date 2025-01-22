@@ -147,6 +147,7 @@ CREATE TABLE roles (
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
+-- insert data for studios and actors first so foreign keys are created for use in movies and roles 
 INSERT INTO studios (
 	name
 ) VALUES 
@@ -204,7 +205,10 @@ INSERT INTO roles (
 .print ""
 
 -- The SQL statement for the movies output
--- TODO!
+
+SELECT title, release_year,mpaa_rating,studios.name
+FROM movies
+INNER JOIN studios ON studios.id=movies.studios_id;
 
 -- Prints a header for the cast output
 .print ""
@@ -214,4 +218,8 @@ INSERT INTO roles (
 
 
 -- The SQL statement for the cast output
--- TODO!
+SELECT movies.title,actors.name, role_name
+FROM roles
+    INNER JOIN actors on actors.id=roles.actors_id
+    INNER JOIN movies on movies.id=roles.movies_id
+ORDER BY movies.title;
