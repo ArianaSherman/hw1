@@ -140,14 +140,14 @@ CREATE TABLE roles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role_name TEXT,
     movies_id INTEGER NOT NULL,                    -- Foreign key to movies table
-    FOREIGN KEY (movies_id) REFERENCES movies(id), -- Define foreign key for movies_id
     actors_id INTEGER NOT NULL,                    -- Foreign key to actors table
-    FOREIGN KEY (actors_id) REFERENCES actors(id), -- Define foreign key for actors_id
+    FOREIGN KEY (movies_id) REFERENCES movies(id), -- Define foreign key for movies_id
+    FOREIGN KEY (actors_id) REFERENCES actors(id)  -- Define foreign key for actors_id
 );
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
--- TODO!
+    
 
 -- Prints a header for the movies output
 .print "Movies"
